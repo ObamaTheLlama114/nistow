@@ -2,7 +2,7 @@ import { server$ } from '@builder.io/qwik-city';
 import kv from '@vercel/kv';
 
 export const getValue = server$(async (key: string): Promise<string> => {
-	console.log(process.env.TEST);
+	console.log(process.env);
 	return await kv.get(key) || "";
 })
 
