@@ -10,6 +10,8 @@ export default component$(() => {
 		return await kv.get(key) || "";
 	})
 
+	getValue("");
+
 	//const setValue = server$(async (key: string, value: string) => {
 	//	if (value === "") {
 	//		await kv.del(key);
