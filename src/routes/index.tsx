@@ -1,12 +1,16 @@
 import { component$, useSignal, useTask$ } from '@builder.io/qwik';
 import { DocumentHead, server$ } from '@builder.io/qwik-city';
+import { createClient } from '@vercel/kv';
 
 export default component$(() => {
 	const key = useSignal("");
 	const value = useSignal("");
 
 	const getValue = server$(async (key: string): Promise<string> => {
-		const kv = require('@vercel/kv');
+		const kv = createClient({
+			url: process.env.USERS_REST_API_URL || "",
+			token: process.env.USERS_REST_API_TOKEN || "",
+		})
 		return await kv.get(key) || "";
 	})
 
