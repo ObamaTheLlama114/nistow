@@ -1,6 +1,5 @@
-import { component$, useSignal, useTask$ } from '@builder.io/qwik';
-import { DocumentHead, server$ } from '@builder.io/qwik-city';
-import kv from '@vercel/kv';
+import { component$, useSignal } from '@builder.io/qwik';
+import { DocumentHead } from '@builder.io/qwik-city';
 
 export default component$(() => {
 	const key = useSignal("");
