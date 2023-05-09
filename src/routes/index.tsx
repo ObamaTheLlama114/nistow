@@ -1,13 +1,14 @@
 import { component$, useSignal } from '@builder.io/qwik';
-import { DocumentHead } from '@builder.io/qwik-city';
+import { DocumentHead, server$ } from '@builder.io/qwik-city';
+import kv from '@vercel/kv';
 
 export default component$(() => {
 	const key = useSignal("");
 	const value = useSignal("");
 
-	//const getValue = server$(async (key: string): Promise<string> => {
-	//	return await kv.get(key) || "";
-	//})
+	const getValue = server$(async (key: string): Promise<string> => {
+		return await kv.get(key) || "";
+	})
 
 	//const setValue = server$(async (key: string, value: string) => {
 	//	if (value === "") {
