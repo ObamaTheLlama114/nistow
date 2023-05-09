@@ -1,4 +1,4 @@
-import { component$, useSignal } from '@builder.io/qwik';
+import { component$, useSignal, useTask$ } from '@builder.io/qwik';
 import { DocumentHead, server$ } from '@builder.io/qwik-city';
 import kv from '@vercel/kv';
 
@@ -10,8 +10,6 @@ export default component$(() => {
 		return await kv.get(key) || "";
 	})
 
-	getValue("");
-
 	//const setValue = server$(async (key: string, value: string) => {
 	//	if (value === "") {
 	//		await kv.del(key);
@@ -20,11 +18,10 @@ export default component$(() => {
 	//	}
 	//})
 
-	//useTask$(async ({ track }) => {
-	//	track(() => key.value);
-	//	const newValue = await getValue(key.value);
-	//	value.value = newValue;
-	//});
+	useTask$(async ({ track }) => {
+		track(() => key.value);
+		value.value = await getValue(key.value);
+	});
 
 	//useTask$(async ({ track }) => {
 	//	track(() => value.value);
