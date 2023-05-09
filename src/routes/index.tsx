@@ -2,9 +2,9 @@ import { component$, useSignal, useTask$ } from '@builder.io/qwik';
 import { DocumentHead, server$ } from '@builder.io/qwik-city';
 import kv from '@vercel/kv';
 
-function useKeyValue(initialKey: string, initialValue: string) {
-	const key = useSignal(initialKey);
-	const value = useSignal(initialValue);
+export default component$(() => {
+	const key = useSignal("");
+	const value = useSignal("");
 
 	const getValue = server$(async (key: string): Promise<string> => {
 		return await kv.get(key) || "";
@@ -28,12 +28,6 @@ function useKeyValue(initialKey: string, initialValue: string) {
 		track(() => value.value);
 		setValue(key.value, value.value);
 	});
-
-	return [key, value] as const;
-}
-
-export default component$(() => {
-	const [key, value] = useKeyValue("", "");
 
 	return (
 		<>
