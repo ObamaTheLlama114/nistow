@@ -1,8 +1,8 @@
 import { server$ } from '@builder.io/qwik-city';
 import kv from '@vercel/kv';
 
-
 export const getValue = server$(async (key: string): Promise<string> => {
+	console.log(process.env.KV_REST_API_URL);
 	return await kv.get(key) || "";
 })
 
