@@ -7,6 +7,7 @@ specifiers:
   '@types/node': ^18.16.1
   '@typescript-eslint/eslint-plugin': 5.59.1
   '@typescript-eslint/parser': 5.59.1
+  '@vercel/kv': ^0.1.2
   eslint: 8.39.0
   eslint-plugin-qwik: 1.0.0
   prettier: 2.8.8
@@ -15,6 +16,9 @@ specifiers:
   vercel: ^28.19.0
   vite: 4.3.3
   vite-tsconfig-paths: 4.2.0
+
+dependencies:
+  '@vercel/kv': 0.1.2
 
 devDependencies:
   '@builder.io/qwik': 1.0.0_undici@5.22.0
@@ -2444,6 +2448,14 @@ packages:
       eslint-visitor-keys: 3.4.1
     dev: true
 
+  /@upstash/redis/1.20.6:
+    resolution: {integrity: sha512-q1izaYEUsq/WiXNOjf4oOjFZe8fIeBSZN8d5cEyOD4nem+zxc4jccieorQQrNlEahKPE1ZYLzVEkMODRUfch2g==}
+    dependencies:
+      isomorphic-fetch: 3.0.0
+    transitivePeerDependencies:
+      - encoding
+    dev: false
+
   /@vanilla-extract/babel-plugin-debug-ids/1.0.2:
     resolution: {integrity: sha512-LjnbQWGeMwaydmovx8jWUR8BxLtLiPyq0xz5C8G5OvFhsuJxvavLdrBHNNizvr1dq7/3qZGlPv0znsvU4P44YA==}
     dependencies:
@@ -2536,6 +2548,15 @@ packages:
   /@vercel/hydrogen/0.0.63:
     resolution: {integrity: sha512-FxBjgX0Mt22eqvHGrMKDcfxt/81y9QrHM6md+hGIflkQ9DvrtyYmmFze588yXWAv/I04eCgVoE+/KsgETkRi3w==}
     dev: true
+
+  /@vercel/kv/0.1.2:
+    resolution: {integrity: sha512-/cTMy9L6qcW7gMGCaicwqOK1zPfP5qlpBaF5TqnXsCB6cYRkiNG13aAodLvgthqZa6B82QNaGGcQl3OiyJFNug==}
+    engines: {node: '>=14.6'}
+    dependencies:
+      '@upstash/redis': 1.20.6
+    transitivePeerDependencies:
+      - encoding
+    dev: false
 
   /@vercel/next/3.7.5:
     resolution: {integrity: sha512-NonL8rt49EnwooMnAXYUDpz2B+e+yoQRdEZoekZlnFzP6VF1F1r14N2X9zUqxeRH7rY6X53MgiRNSHeZKqTXPA==}
@@ -5068,6 +5089,15 @@ packages:
     resolution: {integrity: sha512-RHxMLp9lnKHGHRng9QFhRCMbYAcVpn69smSGcq3f36xjgVVWThj4qqLbTLlq7Ssj8B+fIQ1EuCEGI2lKsyQeIw==}
     dev: true
 
+  /isomorphic-fetch/3.0.0:
+    resolution: {integrity: sha512-qvUtwJ3j6qwsF3jLxkZ72qCgjMysPzDfeV240JHiGZsANBYd+EEuu35v7dfrJ9Up0Ak07D7GGSkGhCHTqg/5wA==}
+    dependencies:
+      node-fetch: 2.6.10
+      whatwg-fetch: 3.6.2
+    transitivePeerDependencies:
+      - encoding
+    dev: false
+
   /javascript-stringify/2.1.0:
     resolution: {integrity: sha512-JVAfqNPTvNq3sB/VHQJAFxN/sPgKnsKrCwyRt15zwNCdrMMJDdcEOdubuy+DuJYYdm0ox1J4uzEuYKkN+9yhVg==}
     dev: true
@@ -5927,7 +5957,6 @@ packages:
         optional: true
     dependencies:
       whatwg-url: 5.0.0
-    dev: true
 
   /node-fetch/2.6.7:
     resolution: {integrity: sha512-ZjMPFEfVx5j+y2yF35Kzx5sF7kDzxuDj6ziH4FFbOp87zKDZNx8yExJIb05OGF4Nlt9IHFIMBkRl41VdvcNdbQ==}
@@ -7162,7 +7191,6 @@ packages:
 
   /tr46/0.0.3:
     resolution: {integrity: sha512-N3WMsuqV66lT30CrXNbEjx4GEwlow3v6rr4mCcv6prnfwhS01rkgyFdjPNBYd9br7LpXV1+Emh01fHnq2Gdgrw==}
-    dev: true
 
   /trim-lines/3.0.1:
     resolution: {integrity: sha512-kRj8B+YHZCc9kQYdWfJB2/oUl9rA99qbowYYBtr4ui4mZyAQ2JpvVBd/6U2YloATfqBhBTSMhTpgBHtU0Mf3Rg==}
@@ -7641,14 +7669,16 @@ packages:
 
   /webidl-conversions/3.0.1:
     resolution: {integrity: sha512-2JAn3z8AR6rjK8Sm8orRC0h/bcl/DqL7tRPdGZ4I1CjdF+EaMLmYxBHyXuKL849eucPFhvBoxMsflfOb8kxaeQ==}
-    dev: true
+
+  /whatwg-fetch/3.6.2:
+    resolution: {integrity: sha512-bJlen0FcuU/0EMLrdbJ7zOnW6ITZLrZMIarMUVmdKtsGvZna8vxKYaexICWPfZ8qwf9fzNq+UEIZrnSaApt6RA==}
+    dev: false
 
   /whatwg-url/5.0.0:
     resolution: {integrity: sha512-saE57nupxk6v3HY35+jzBwYa0rKSy0XR8JSxZPwgLr7ys0IBzhGviA1/TUGJLmSVqs8pb9AnvICXEuOHLprYTw==}
     dependencies:
       tr46: 0.0.3
       webidl-conversions: 3.0.1
-    dev: true
 
   /which-boxed-primitive/1.0.2:
     resolution: {integrity: sha512-bwZdv0AKLpplFY2KZRX6TvyuN7ojjr7lwkg6ml0roIy9YeuSr7JS372qlNW18UQYzgYK9ziGcerWqZOmEn9VNg==}
